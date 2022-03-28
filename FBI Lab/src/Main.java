@@ -44,5 +44,15 @@ public class Main {
     for (String toPrint : caseThree) {
       System.out.println(toPrint);
     }
+
+    // case four
+    // young man (under 35) driving a ford with NJ plates
+    ArrayList<String> caseFour = SqlConnection.caseFour();
+    System.out.println("\n\n\nPrinting all suspects who match the following parameters: Men and women who drive a Chevy, Ford, or Honda and have a Salary of above $15k, and savings below $2k.\n");
+    System.out.println("Name\tAddress\tState\tAge\tSex\tSalary\tSavings\tCar\tYear");
+    // enhanced for loop to print the data
+    for (String toPrint : caseFour) {
+      System.out.println(toPrint);
+    }
   }
 }

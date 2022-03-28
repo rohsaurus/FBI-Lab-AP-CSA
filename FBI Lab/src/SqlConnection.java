@@ -186,4 +186,33 @@ public class SqlConnection {
     // returning the arraylist
     return results;
     }
+
+    public static ArrayList<String> caseFour() {
+        String sql = "SELECT * FROM Main WHERE Car='Ford' AND Age<35 AND State='NJ' AND Sex='M';";
+        // arraylist to store and return the data
+        ArrayList<String> results = new ArrayList<String>();
+        try {
+            // establishing connection to the database and executing SQL query
+            Connection conn = Connect();
+            Statement stm1 = conn.createStatement();
+            ResultSet rs = stm1.executeQuery(sql);
+            // looping through the result set, adding the values to the arraylist
+            while (rs.next()) {
+                results.add(rs.getString("Name") + "\t" + rs.getString("Address") + "\t" + rs.getString("State") + "\t"
+                        + rs.getInt("Age") + "\t" + rs.getString("Sex") + "\t" + rs.getInt("Salary") + "\t" + rs.getInt("Savings") + "\t" + rs.getString("Car") + "\t" + rs.getInt("Year"));
+        }
+        // closing the conneciton
+        conn.close();
+    }
+    // catch statements
+    catch (SQLException e) {
+        System.out.println("There was a SQL error.");
+        e.printStackTrace();
+    }
+    catch (Exception e) {
+        System.out.println("Some other generic error... Printing stack trace");
+        e.printStackTrace();
+    }
+    return results;
+}
 }
